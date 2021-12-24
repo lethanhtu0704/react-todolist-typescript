@@ -10,7 +10,7 @@ import Navbar from "./Navbar";
 const TodoList = () => {
   const [inputValue, updateInputValue] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
-  const [isDisabled, setDisabled] = useState<Boolean>(true);
+  const [isDisabled, setDisabled] = useState<boolean>(true);
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(TodoContext);
   let test = theme as
@@ -76,7 +76,7 @@ const TodoList = () => {
             <AddIcon />
           </Button>
           <Button
-            disabled={isDisabled as boolean | undefined}
+            disabled={isDisabled}
             sx={{ ml: 1 }}
             onClick={removeSelectedTodo}
             color={test}

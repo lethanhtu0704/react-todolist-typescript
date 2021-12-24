@@ -8,9 +8,9 @@ import { red } from "@mui/material/colors";
 interface TodoItemProps {
   //pull_data: (arg: string[]) => void,
   selected: string[];
-  setSelected: (arg: any) => void;
-  isDisabled: Boolean;
-  setDisabled: (arg: Boolean) => void;
+  setSelected: (arg: string[]) => void;
+  isDisabled: boolean;
+  setDisabled: (arg: boolean) => void;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
@@ -50,14 +50,14 @@ const TodoItem: React.FC<TodoItemProps> = ({
   };
 
   const handleCheck = (id: string) => {
-    setSelected((prev: string[]) => {
-      const isChecked = selected.includes(id);
-      if (isChecked) {
-        return selected.filter((item) => item !== id);
-      } else {
-        return [...prev, id];
-      }
-    });
+    let newChecked = [];
+    const isChecked = selected.includes(id);
+    if (isChecked) {
+      newChecked = selected.filter((item) => item !== id);
+    } else {
+      newChecked = [...selected, id];
+    }
+    setSelected(newChecked);
   };
 
   useEffect(() => {
